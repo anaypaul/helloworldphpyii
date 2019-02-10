@@ -11,7 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\RegistrationForm;
 use app\models\UploadImageForm;
-
+use yii\web\UploadedFile, models;
 
 class SiteController extends Controller
 {

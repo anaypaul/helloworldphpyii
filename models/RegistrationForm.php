@@ -2,6 +2,7 @@
    namespace app\models;
    use Yii;
    use yii\base\Model;
+   use app\Model\Form;
    class RegistrationForm extends Model {
     //   public $username;
     //   public $password;
@@ -20,6 +21,7 @@
         return [
             [['first_name','last_name','email_address','marks','status'],'required','message'=>'Mandatory field'],
             ['email_address','email'],
+            ['marks','double'],
             [['profile_picture'], 'file', 'skipOnEmpty' => false, 'extensions' => 'jpg, png'],
         ];
     }
@@ -33,6 +35,18 @@
         } else {
            return false;
         }
+     }
+
+     public function registration(){
+         $form  = new Form();
+         $form->first_name = $this->first_name;
+         $form->last_name = $this->last_name;
+         $form->email_address = $this->email_address;
+         $form->profile_picture = $this->profile_picture;
+         $form->marks = $this->marks;
+         $form->status = $this->status;
+         $form->save();
+
      }
       /**
       * @return array customized attribute labels
